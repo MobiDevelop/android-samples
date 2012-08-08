@@ -78,6 +78,15 @@ public class App extends Activity {
 		}
 	}
 	
+	public void handleResult(boolean result, String text) {
+		if (dialog != null) {
+			dialog.dismiss();
+			dialog = null;
+		}
+		TextView textView = (TextView) findViewById(R.id.text);
+		textView.setText(result + "\n" + text);		
+	}
+	
 	/**
 	 * A simple broadcast receiver for receiving progress and result broadcasts
 	 * from {@link PostIntentService}.
@@ -93,17 +102,8 @@ public class App extends Activity {
     	@Override
 		public void onReceive(Context context, Intent intent) {
     		String action = intent.getAction();
-    		if (ACTION_PROGRESS.equals(action)) {
-    			
-    		}
-    		else
     		if (ACTION_RESULT.equals(action)) {
-    			if (dialog != null) {
-    				dialog.dismiss();
-    				dialog = null;
-    			}
-    			TextView text = (TextView) findViewById(R.id.text);
-    			text.setText(intent.getBooleanExtra(EXTRA_RESULT, false) + ": " + intent.getStringExtra(EXTRA_TEXT));
+    			handleResult(intent.getBooleanExtra(EXTRA_RESULT, false), intent.getStringExtra(EXTRA_TEXT));
     		}
 		}
     }
