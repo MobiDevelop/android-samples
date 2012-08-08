@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Post Image</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_app">Post Image</string>
+    <string name="label_button_get_content">Get Image</string>
+    <string name="label_dialog_uploading">Uploading#8230;</string>
+</resources>
